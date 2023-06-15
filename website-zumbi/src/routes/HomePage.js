@@ -1,7 +1,8 @@
 import Navbar from "../components/Navbar";
 import Secao from "../components/Secao";
-import Homenageados from "../components/Homenageados";
+import Homenageados from "../components/Homenageados3";
 import Footer from "../components/Footer";
+//import Cards from "../components/Cards";
 
 function HomePage() {
     return(
