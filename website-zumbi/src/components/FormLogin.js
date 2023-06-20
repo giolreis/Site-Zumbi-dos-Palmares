@@ -3,7 +3,6 @@ import {auth} from '../firebase';
 import { Link } from "react-router-dom";
 import "./FormLogin.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import CadastroPage from "../routes/CadastroPage";
 
 function FormLogin() {
     const [email, setEmail] = useState('');
@@ -27,8 +26,7 @@ function FormLogin() {
             <input id="emaillogin" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <input id="passwordlogin" type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
             <button type="submit">Entrar</button>
-            <Link to={CadastroPage}>Primeiro Acesso? Crie uma conta</Link>
-            <Link to="/cadastro">Teste</Link>
+            <Link to="/cadastro">Primeiro Acesso? Crie uma conta</Link>
             <a href="#">Esqueci minha senha</a>
         </form>
         {loginSuccesso && <p>Login feito com sucesso!</p>}
