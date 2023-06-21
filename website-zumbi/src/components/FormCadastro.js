@@ -6,18 +6,22 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 function FormCadastro() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [CadastroSuccesso, setCadastroSuccesso] = useState(false);
 
     const LoginCadastro = (e) =>{
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(userCredential);
-            setCadastroSuccesso(true);
+        })
+        .then(() =>{
+            alert("Usuário Cadastrado com sucesso!")
         })
         .catch((error) => {
             console.log(error);
         });
+
+        setEmail("");
+        setPassword("");
     };
 
     return(
@@ -26,11 +30,8 @@ function FormCadastro() {
                 <form onSubmit={LoginCadastro}>
                     <input type="email" id="emailc" placeholder="E-mail" required value={email} onChange={(e) => setEmail(e.target.value)}/>
                     <input type="password" id="passwordc1" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                    <button class="buttom" type="submit" >Cadastrar</button>
-                    
-                    
-                </form>     
-                {CadastroSuccesso && <p>Cadastro realizado com sucesso!</p>}       
+                    <button class="buttom" type="submit" >Cadastrar</button>   
+                </form>         
         </div>       
     )
 }

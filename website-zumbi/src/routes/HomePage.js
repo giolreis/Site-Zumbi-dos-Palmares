@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Secao from "../components/Secao";
-import Homenageados from "../components/Homenageados3";
+import Homenageados from "../components/Homenageados";
 import Footer from "../components/Footer";
 //import Cards from "../components/Cards";
 

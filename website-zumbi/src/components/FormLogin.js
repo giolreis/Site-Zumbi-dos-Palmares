@@ -3,6 +3,7 @@ import {auth} from '../firebase';
 import { Link } from "react-router-dom";
 import "./FormLogin.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
+//{loginSuccesso && <p>Login feito com sucesso!</p>}
 
 function FormLogin() {
     const [email, setEmail] = useState('');
@@ -15,9 +16,15 @@ function FormLogin() {
             console.log(userCredential);
             setLoginSuccess(true);
         })
+        .then(() =>{
+            alert("Login realizado com sucesso!")
+        })
         .catch((error) => {
             console.log(error);
         });
+
+        setEmail('');
+        setPassword('');
     };
     return (
         <div className="form-container">
@@ -29,7 +36,6 @@ function FormLogin() {
             <Link to="/cadastro">Primeiro Acesso? Crie uma conta</Link>
             <a href="#">Esqueci minha senha</a>
         </form>
-        {loginSuccesso && <p>Login feito com sucesso!</p>}
         </div>
     );
 }

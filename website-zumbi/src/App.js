@@ -7,6 +7,7 @@ import SairPage from './routes/SairPage';
 //import { Routes, Route } from 'react-router-dom/cjs/react-router-dom.min';
 import { Routes, Route } from 'react-router-dom';
 import CadastroPage from './routes/CadastroPage';
+import DetalheHomenageadoPage from './routes/DetalheHomenageadoPage'
 
 
 export default function App(){
@@ -19,6 +20,7 @@ export default function App(){
           <Route path='/login' element={<LoginPage />} />
           <Route path='/sair' element={<SairPage />} />
           <Route path='/cadastro' element={<CadastroPage />} />
+          <Route path='/usuarioHomenageado/:id' element={<DetalheHomenageadoPage/>} />
 
       </Routes>
     </div>
