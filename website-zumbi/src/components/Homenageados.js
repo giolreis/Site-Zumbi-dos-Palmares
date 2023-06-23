@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { Button, Card, Container, Image } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
 import "./Homenageados.css";
+import { useNavigate } from "react-router-dom";
 
 function Homenageados() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "users"), (snapshot) => {
@@ -46,7 +47,7 @@ function Homenageados() {
               </Card.Content>
               <Card.Content extra>
                 <div>
-                  <Link to={`/usuarioHomenageado/${item.id}`}>Mais detalhes</Link>
+                    <Button onClick={() => navigate(`/usuarioHomenageado/${item.id}`)}>Mais Detalhes</Button>
                 </div>
               </Card.Content>
             </Card>

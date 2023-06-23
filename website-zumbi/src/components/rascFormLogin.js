@@ -4,9 +4,7 @@ import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import "./FormLogin.css";
 
-export const UsersContext = React.createContext();
-
-const FormLogin = (props) => {
+function FormLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -16,8 +14,6 @@ const FormLogin = (props) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        //adicionado linha abaixo
-        const user = userCredential.user;
         console.log(userCredential);
         setLoginSuccess(true);
       })
@@ -40,11 +36,6 @@ const FormLogin = (props) => {
 
   return (
     <div className="form-container">
-      
-      <UsersContext.Provider value={{ loginSuccess: loginSuccess, Login: Login }}>
-            {props.children}
-      </UsersContext.Provider>
-
       <h1>Faça seu Login</h1>
       <form onSubmit={Login}>
         <input id="emaillogin" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -52,10 +43,8 @@ const FormLogin = (props) => {
         <button type="submit">Entrar</button>
         <Link to="/cadastro">Primeiro Acesso? Crie uma conta</Link>
         <a href="#">Esqueci minha senha</a>
-        loginSuccess();
       </form>
     </div>
-    
   );
 }
 

@@ -50,10 +50,7 @@ function DetalheHomenageado() {
         const favoriteData = {
           userId: auth.user.uid,
           favoriteItemId: id,
-          // Outros dados do favorito que você deseja salvar
         };
-  
-        // Crie uma nova coleção "favorites" e adicione o documento com os dados do favorito
         const docRef = await addDoc(collection(db, "favoritosUser"), favoriteData);
   
         console.log("Favorito salvo com ID:", docRef.id);
