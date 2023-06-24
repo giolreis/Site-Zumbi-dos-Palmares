@@ -70,11 +70,6 @@ function Favoritos() {
                 </Card.Description>
               </div>
             </Card.Content>
-            <Card.Content extra>
-              <div>
-                <Button onClick={() => navigate(`/usuarioHomenageado/${item.id}`)}>Mais Detalhes</Button>
-              </div>
-            </Card.Content>
           </Card>
         ))}
       </div>

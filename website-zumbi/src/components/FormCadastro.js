@@ -30,7 +30,7 @@ function FormCadastro() {
                 <form onSubmit={LoginCadastro}>
                     <input type="email" id="emailc" placeholder="E-mail" required value={email} onChange={(e) => setEmail(e.target.value)}/>
                     <input type="password" id="passwordc1" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                    <button class="buttom" type="submit" >Cadastrar</button>   
+                    <button class="button" type="submit" >Cadastrar</button>   
                 </form>         
         </div>       
     )

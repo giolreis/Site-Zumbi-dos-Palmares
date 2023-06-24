@@ -51,7 +51,6 @@ function DetalheHomenageado() {
           favoriteItemId: id,
           nome: user1.nome,
           image: user1.image,
-          texto: user1.texto,
           descricao: user1.descricao,
           // Outros dados do favorito que você deseja salvar
         };

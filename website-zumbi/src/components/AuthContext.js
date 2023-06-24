@@ -1,13 +1,14 @@
 import React, { createContext, useState } from 'react';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from '../firebase';
-
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   const Login = (e) => {
     e.preventDefault();
@@ -25,8 +26,21 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        setIsLoggedIn(false);
+        setUser(null);
+        alert("Logout realizado com sucesso!");
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn:isLoggedIn, setIsLoggedIn:setIsLoggedIn, Login:Login, user:user }}>
+    <AuthContext.Provider value={{ isLoggedIn:isLoggedIn, setIsLoggedIn:setIsLoggedIn, Login:Login, user:user, logout:logout }}>
       {children}
     </AuthContext.Provider>
   );

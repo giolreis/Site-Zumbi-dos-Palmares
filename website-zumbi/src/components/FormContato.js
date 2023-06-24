@@ -39,7 +39,7 @@ function FormContato() {
                 <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <input placeholder="Assunto" value={assunto} onChange={(e) => setAssunto(e.target.value)}/>
                 <textarea placeholder="Mensagem" rows="4" value={mensagem} onChange={(e) => setMensagem(e.target.value)}/>
-                <button type="submit">Enviar Mensagem</button>
+                <button className="button" type="submit">Enviar Mensagem</button>
             </form>
         </div>
     )

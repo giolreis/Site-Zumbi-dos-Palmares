@@ -26,9 +26,8 @@ function FormLogin() {
       <form onSubmit={Login}>
         <input id="email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input id="password" type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Entrar</button>
+        <button className="button" type="submit">Entrar</button>
         <Link to="/cadastro">Primeiro Acesso? Crie uma conta</Link>
-        <a href="#">Esqueci minha senha</a>
       </form>
     </div>
   );

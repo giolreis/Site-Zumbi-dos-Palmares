@@ -1,0 +1,14 @@
+.texto-formatacao{
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.button{
+    background-color: #222;
+    font-size: 1.2rem;
+    padding: 0 30px;
+    color: white;
+    border-radius: 7px;
+}
