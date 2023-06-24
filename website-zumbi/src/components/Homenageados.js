@@ -27,8 +27,8 @@ function Homenageados() {
 
   const calculateNumColumns = (totalUsers) => {
     const screenWidth = window.innerWidth;
-    const cardWidth = 100; // Adjust this value according to your card width
-    const minColumnWidth = 500; // Adjust this value according to your minimum column width
+    const cardWidth = 100;
+    const minColumnWidth = 500;
     const maxColumns = Math.floor(screenWidth / minColumnWidth);
     const numColumns = Math.min(Math.floor(screenWidth / cardWidth), maxColumns);
     return Math.max(numColumns, 2);

@@ -21,8 +21,6 @@ function Favoritos() {
         let list = [];
         snapshot.docs.forEach((doc) => {
           const data = { id: doc.id, ...doc.data() };
-
-          // Verificar se o favorito já existe na lista
           const existingFavorite = list.find((favorite) => favorite.favoriteItemId === data.favoriteItemId);
 
           if (!existingFavorite) {

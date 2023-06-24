@@ -52,10 +52,8 @@ function DetalheHomenageado() {
           nome: user1.nome,
           image: user1.image,
           descricao: user1.descricao,
-          // Outros dados do favorito que você deseja salvar
         };
 
-        // Crie uma nova coleção "favoritosUser" e adicione o documento com os dados do favorito
         const docRef = await addDoc(collection(db, "favoritosUser"), favoriteData);
 
         console.log("Favorito salvo com ID:", docRef.id);
