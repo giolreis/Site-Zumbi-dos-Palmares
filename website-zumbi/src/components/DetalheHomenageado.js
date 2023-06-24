@@ -1,20 +1,19 @@
 import "./DetalheHomenageado.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
 import { Button } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { doc, getDoc, collection, addDoc } from "firebase/firestore";
+import { AuthContext } from "./AuthContext";
 
 function DetalheHomenageado() {
   const { id } = useParams();
-  const [user, setUser] = useState(null);
+  const [user1, setUser1] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const auth = useAuth();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -22,7 +21,7 @@ function DetalheHomenageado() {
         const userRef = doc(db, "users", id);
         const userDoc = await getDoc(userRef);
         if (userDoc.exists()) {
-          setUser({ id: userDoc.id, ...userDoc.data() });
+          setUser1({ id: userDoc.id, ...userDoc.data() });
         } else {
           setError("Usuário não encontrado.");
         }
@@ -45,33 +44,38 @@ function DetalheHomenageado() {
   }
 
   const handleFavorite = async () => {
-    if (auth.user) { //auth.user
+    if (user) {
       try {
         const favoriteData = {
-          userId: auth.user.uid,
+          userId: user.uid,
           favoriteItemId: id,
+          nome: user1.nome,
+          image: user1.image,
+          texto: user1.texto,
+          descricao: user1.descricao,
           // Outros dados do favorito que você deseja salvar
         };
-  
-        // Crie uma nova coleção "favorites" e adicione o documento com os dados do favorito
+
+        // Crie uma nova coleção "favoritosUser" e adicione o documento com os dados do favorito
         const docRef = await addDoc(collection(db, "favoritosUser"), favoriteData);
-  
+
         console.log("Favorito salvo com ID:", docRef.id);
+        alert("Favorito salvo com sucesso!");
       } catch (error) {
         console.error("Erro ao salvar favorito:", error);
       }
     } else {
-      console.log("Usuário não logado. Redirecionando para a página de login...");
-      //navigate("/login");
+      alert("Usuário não logado. Redirecionando para a página de login...");
+      navigate("/login", { replace: true });
     }
   };
 
   return (
-    console.log(auth.user),
+    console.log("Homenageado", user),
     <div className="formatacao">
-      <h1>{user.nome}</h1>
-      <img src={user.image} alt={user.nome} />
-      <p>{user.texto}</p>
+      <h1>{user1.nome}</h1>
+      <img src={user1.image} alt={user1.nome} />
+      <p>{user1.texto}</p>
       <Button onClick={handleFavorite}>Favoritar</Button>
       <Button onClick={() => navigate("/")}>Sair</Button>
     </div>

@@ -38,8 +38,8 @@ function FormLogin() {
     <div className="form-container">
       <h1>Faça seu Login</h1>
       <form onSubmit={Login}>
-        <input id="emaillogin" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input id="passwordlogin" type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input id="email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input id="password" type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">Entrar</button>
         <Link to="/cadastro">Primeiro Acesso? Crie uma conta</Link>
         <a href="#">Esqueci minha senha</a>
