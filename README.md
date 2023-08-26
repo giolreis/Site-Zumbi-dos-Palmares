@@ -5,7 +5,7 @@
 # Projeto Diploma Zumbi dos Palmares
 
 Bem-vindo ao projeto **Site Diploma Zumbi dos Palmares**. Este projeto tem como objetivo criar um site dedicado a homenagear pessoas notáveis da comunidade negra em Campinas, reconhecendo suas contribuições significativas para o desenvolvimento local.
-O site é : premiozumbicampinas.web.app/
+O site é : https://premiozumbicampinas.web.app
 
 ## Sobre o Projeto
 
