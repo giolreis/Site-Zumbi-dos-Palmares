@@ -1,6 +1,6 @@
 ### Alunos :
          Giovani Luiz dos Reis,
-         Mayna Helena de Azevedo,
+         Mayna Helena de Azevedo.
        
 # Projeto Diploma Zumbi dos Palmares
 
